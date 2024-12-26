@@ -13,7 +13,7 @@ import Dashboard from "../pages/admin/Dashboard";
 import Category from "../pages/admin/Category";
 import Product from "../pages/admin/Product";
 import Manage from "../pages/admin/Manage";
-import LayoytUser from "../layouts/LayoutUser";
+import LayoutUser from "../layouts/LayoutUser";
 import HomeUser from "../pages/user/HomeUser";
 import ProtectRouteUser from "./ProtectRouteUser";
 import ProtectRouteAdmin from "./ProtectRouteAdmin";
@@ -35,31 +35,27 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: '/admin',
+    path: "/admin",
     element: <ProtectRouteAdmin element={<LayoutAdmin />} />,
-    children:[
-        { index:true,element:<Dashboard /> },
-        { path:'category',element:<Category /> },
-        { path:'product',element:<Product /> },
-        { path:'product/:id',element:<EditProduct /> },
-        { path:'manage',element:<Manage /> },
-        { path:'orders',element:<ManageOrder /> },
-    ]
+    children: [
+      { index: true, element: <Dashboard /> },
+      { path: "category", element: <Category /> },
+      { path: "product", element: <Product /> },
+      { path: "product/:id", element: <EditProduct /> },
+      { path: "manage", element: <Manage /> },
+      { path: "orders", element: <ManageOrder /> },
+    ],
   },
   {
-    path: '/user',
-    // element: <LayoytUser />,
-    element: <ProtectRouteUser element={<LayoytUser />} />,
-    children:[
-        { index:true,element:<HomeUser /> },
-        { path:'payment',element:<Payment /> },
-        { path: "history", element: <History /> },
-
-        
-    ]
-  }
-
-
+    path: "/user",
+    // element: <LayoutUser />,
+    element: <ProtectRouteUser element={<LayoutUser />} />,
+    children: [
+      { index: true, element: <HomeUser /> },
+      { path: "payment", element: <Payment /> },
+      { path: "history", element: <History /> },
+    ],
+  },
 ]);
 
 const AppRoutes = () => {
